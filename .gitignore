@@ -18,4 +18,4 @@ logs
 
 yarn.lock
 
-tmp/.
+tmp/*
