@@ -17,3 +17,5 @@ logs
 *.sw*
 
 yarn.lock
+
+tmp/.
