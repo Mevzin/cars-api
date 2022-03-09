@@ -9,12 +9,14 @@ class CreateCategoryController {
 
   }
 
-  handle(request: Request, response: Response): Response{
+  async handle(request: Request, response: Response): Promise<Response>{
     const { name, description } = request.body;
-
-    this.createCategoryUseCase.execute({ name, description });
-  
-    return response.status(201).send();
+    try {
+      await this.createCategoryUseCase.execute({ name, description });
+      return response.status(201).json({ message: 'Category created with success' });
+    } catch (error) {
+      return response.status(400).json({ error: error.message });
+    }
   }
 }
 
